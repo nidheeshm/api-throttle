@@ -62,3 +62,27 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+## Setting up Throttle API
+
+1. Clone repository
+
+2. create .env file. ( make a copy from .env.example. add a new env variable 'RATE_LIMIT_DEFAULT' and set same integer value. Example RATE_LIMIT_DEFAULT=10. This is for using the default laravel trottle middleware. A code is commented out in RouteServiceProvider. This is to use the custom request count saved in settings table )
+
+3. Set up db configiration in .env
+
+4. RUN composer install
+
+5. RUN php artisan migrate
+
+6. RUN php artisan db:seed    ( This is to set custom request limit. The value is saved in settings table )
+
+7. RUN php artisan serve
+
+8. Test using curl
+
+    POST URL: curl -X POST -H "Content-Type: application/json" --data '{"first_name": "Sam", "last_name": "Alex", "email": "sam@mail.com" }' http://127.0.0.1:8000/api/registration
+
+
+    GET URL POST URL: curl -X GET -H "Content-Type: application/json" --data '{}' http://127.0.0.1:8000/api/registration

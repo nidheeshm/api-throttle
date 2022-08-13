@@ -56,8 +56,8 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function configureRateLimiting()
     {
-        RateLimiter::for('customApi', function (Request $request) {
-            
+        RateLimiter::for('api', function (Request $request) {
+
             // $rateLimitDefault = \App\Models\Settings::query()
             // ->settings('rate-limit', 'limit')->first()->value ?? env('RATE_LIMIT_DEFAULT', 5);
 

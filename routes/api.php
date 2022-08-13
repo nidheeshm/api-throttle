@@ -20,12 +20,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 //custom laravel throttle middleware
-Route::middleware(['rate.limit'])->group(function () {
+Route::group(['middleware' => 'rate.limit'], function () {
     Route::post('/registration', [RegistrationController::class, 'store']);    
 });
 
 //default laravel throttle middleware
-Route::middleware(['throttle:customApi'])->group(function () {
+Route::group(['middleware' => 'throttle:api'], function () {
     Route::get('/registration', [RegistrationController::class, 'index']);
 });
 

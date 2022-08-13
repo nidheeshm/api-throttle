@@ -18,7 +18,7 @@ class RateLimit
 
     public function __construct(Request $request)
     {
-        $this->rateLimitDefault = env('RATE_LIMIT_DEFAULT', 5);
+        $this->rateLimitDefault = (int)env('RATE_LIMIT_DEFAULT', 5);
         $this->requestIdentifier = $this->makeRequestIdentifier($request);
     }
 
