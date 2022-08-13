@@ -25,8 +25,17 @@ Route::group(['middleware' => 'rate.limit'], function () {
 });
 
 //default laravel throttle middleware
-Route::group(['middleware' => 'throttle:api'], function () {
+Route::group(['middleware' => function(){
+    $limit = \App\Models\Settings::query()
+             ->settings('rate-limit', 'limit')->first()->value ?? env('RATE_LIMIT_DEFAULT', 5);
+    return 'throttle:'.$limit;
+}], function () {
     Route::get('/registration', [RegistrationController::class, 'index']);
+});
+
+
+Route::group(['middleware' => 'throttle:api'], function () {
+    Route::get('/registration/index', [RegistrationController::class, 'index']);
 });
 
 

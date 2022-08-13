@@ -85,4 +85,4 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
     POST URL: curl -X POST -H "Content-Type: application/json" --data '{"first_name": "Sam", "last_name": "Alex", "email": "sam@mail.com" }' http://127.0.0.1:8000/api/registration
 
 
-    GET URL POST URL: curl -X GET -H "Content-Type: application/json" --data '{}' http://127.0.0.1:8000/api/registration
+    GET URL POST URL: curl -X GET -H "Content-Type: application/json" --data '{}' http://127.0.0.1:8000/api/registration/index
