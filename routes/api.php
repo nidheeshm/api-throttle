@@ -28,7 +28,7 @@ Route::group(['middleware' => 'rate.limit'], function () {
 Route::group(['middleware' => function(){
     $limit = \App\Models\Settings::query()
              ->settings('rate-limit', 'limit')->first()->value ?? env('RATE_LIMIT_DEFAULT', 5);
-    return 'throttle:'.$limit;
+    return 'throttle:'.($limit + 1);
 }], function () {
     Route::get('/registration', [RegistrationController::class, 'index']);
 });
